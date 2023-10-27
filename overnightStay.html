@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Homepage</title>
+    <title>Overnight Cost Estimator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
@@ -13,34 +13,124 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">Vacation Central</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Overnight Stays</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Planning
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item disabled" aria-disabled="true" href="overnightStay.html">Overnight Plans</a></li>
-                  <li><a class="dropdown-item" href="diningPlan.html">Dining Plans</a></li>
-                  <li><a class="dropdown-item" href="carRental.html">Car Rentals</a></li>
-                  <li><a class="dropdown-item" href="activityPlan.html">Activities</a></li>
+            <a class="navbar-brand" href="index.html">Vacation Central</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Overnight Stays</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Planning
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item disabled" aria-disabled="true"
+                                    href="overnightStay.html">Overnight Plans</a></li>
+                            <li><a class="dropdown-item" href="diningPlan.html">Dining Plans</a></li>
+                            <li><a class="dropdown-item" href="carRental.html">Car Rentals</a></li>
+                            <li><a class="dropdown-item" href="activityPlan.html">Activities</a></li>
+                        </ul>
+                    </li>
                 </ul>
-              </li>
-            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <form>
+    <div class="container" style="width:66%;">
+        <div class="row justify-content-start">
+            <div class="col-6">
+                Full Name : 
+                <input type="text" id="fullName" required>
+            </div>
+            <div class="col-6">
+                Email :
+                <input type="text" id="emailAddress" required>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col text-center">
+            Select your check-in date:  
+            <input type="date" id="dateCheckIn" style="width:33%" required>
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-start">
+            <div class="col text-center">
+            Number of Nights: 
+            <input type="number" id="numNights" style="width:15%" min="1" max="28" required>
+            </div>
+        </div>
+        <br>
+
+        <div class="container border" style="width:50%">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="queenRadio" checked>
+            <label class="form-check-label" for="queenRadio">
+            Queen
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="kingRadio">
+            <label class="form-check-label" for="kingRadio">
+            King
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="twoBedRadio">
+            <label class="form-check-label" for="twoBedRadio">
+            2 Bedroom Suite
+            </label>
           </div>
         </div>
-      </nav>
+<br>
+            <div class="row justify-content-start">
+                <div class="col">
+                    Number of Adults (1-4) : 
+                    <input type="number" id="numAdults" style="width:25%" min="1" max="4" required>
+                </div>
+                <div class="col">
+                    Number of Children (0-4) :
+                    <input type="number" id="numChildren" style="width:25%" min="0" max="4" required>
+                </div> 
+            </div>
 
+            <br>
+
+            <div class="container border" style="width:50%">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="noDiscountRadio" checked>
+                <label class="form-check-label" for="noDiscountRadio">
+                None
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="seniorDiscountRadio">
+                <label class="form-check-label" for="s  eniorDiscountRadio">
+                AAA/Senior
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="militaryDiscountRadio">
+                <label class="form-check-label" for="militaryDiscountRadio">
+                Military
+                </label>
+              </div>
+
+    </div>
+    </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        </script>
+
+    <script src="/scripts/overnightStay.js"></script>
 </body>
 
 </html>
