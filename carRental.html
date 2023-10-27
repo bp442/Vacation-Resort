@@ -35,7 +35,111 @@
       </div>
     </nav>
     
+    <h1 class="text-center">ACME Car Rental</h1>
+        <br>
+
+        <div class="container" style="width:50%">
+            <div class="row justify-content-start">
+                <p>Pickup date:</p>
+                <input type="date">
+            </div>
+            <div class="row justify-content-start">
+                <p>Number of days: </p>
+                <input type="text" id="numDaysText">
+            </div>
+        </div>
+
+        <div class="container" style="width:50%">
+            <div class="row">
+                <h3>Options</h3>
+                <div class="row">
+                    <div class="col" id="optionsCheck">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="elecTollOption">
+                            <label class="form-check-label" for="elecTollOption">
+                                Electronic Toll Tag ($3.95/day)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="gpsOption">
+                            <label class="form-check-label" for="gpsOption">
+                                GPS ($2.95/day)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="roadsideOption">
+                            <label class="form-check-label" for="roadsideOption">
+                                Roadside Assistance ($2.95/day)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="container" style="width:50%">
+            <div class="row">
+                <div class="col">
+                    <h3>Under 25?</h3>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="noRadio" checked>
+                        <label class="form-check-label" for="noRadio">
+                            No
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="yesRadio">
+                        <label class="form-check-label" for="yesRadio">
+                            Yes
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <input type="button" value="Estimate Total Cost" id="calculateBtn">
+        </div>
+
+        
+        <br>
+        
+        <div class="container text-start" style="width:50%">
+            <div class="row justify-content-around">
+                <div class="col">
+                    <p>Car rental:  </p>
+                </div>
+                <div class="col">
+                    <p id="rentalCost"> xxx.xx </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>Options:  </p>
+                </div>
+                <div class="col">
+                    <p id="optionCost"> xx.xx </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>Under 25 surcharge:  </p>
+                </div>
+                <div class="col">
+                    <p id="underCost"> xx.xx </p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <p>Total due:  </p>
+                </div>
+                <div class="col">
+                    <p id="totalCost"> xxx.xx </p>
+                </div>
+            </div>
+        </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="/scripts/carRental.js"></script>
   </body>
 </html>
