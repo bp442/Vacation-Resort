@@ -58,12 +58,8 @@ function calculateCost(){
 
                 totalCost = postRoomCost + taxCost;
 
-                document.getElementById("roomCost").innerText = "$" + preRoomCost.toFixed(2);
-                document.getElementById("discountCost").innerText = "$" + discountCost.toFixed(2);
-                document.getElementById("discountedRoomCost").innerText = "$" + postRoomCost.toFixed(2);
-                document.getElementById("taxCost").innerText = "$" + taxCost.toFixed(2);
-                document.getElementById("totalCost").innerText = "$" + totalCost.toFixed(2);
-                document.getElementById("confirmationCode").innerText = confirmationCode;
+
+                displayTotals(preRoomCost, discountCost, postRoomCost, taxCost, totalCost, confirmationCode);
             }
         }
         else if(kingRadio.checked){
@@ -89,12 +85,7 @@ function calculateCost(){
     
                     totalCost = postRoomCost + taxCost;
     
-                    document.getElementById("roomCost").innerText = "$" + preRoomCost.toFixed(2);
-                    document.getElementById("discountCost").innerText = "$" + discountCost.toFixed(2);
-                    document.getElementById("discountedRoomCost").innerText = "$" + postRoomCost.toFixed(2);
-                    document.getElementById("taxCost").innerText = "$" + taxCost.toFixed(2);
-                    document.getElementById("totalCost").innerText = "$" + totalCost.toFixed(2);
-                    document.getElementById("confirmationCode").innerText = confirmationCode;
+                    displayTotals(preRoomCost, discountCost, postRoomCost, taxCost, totalCost, confirmationCode);
                 }
             }
             else if(twoBedRadio.checked){
@@ -120,12 +111,7 @@ function calculateCost(){
         
                         totalCost = postRoomCost + taxCost;
         
-                        document.getElementById("roomCost").innerText = "$" + preRoomCost.toFixed(2);
-                        document.getElementById("discountCost").innerText = "$" + discountCost.toFixed(2);
-                        document.getElementById("discountedRoomCost").innerText = "$" + postRoomCost.toFixed(2);
-                        document.getElementById("taxCost").innerText = "$" + taxCost.toFixed(2);
-                        document.getElementById("totalCost").innerText = "$" + totalCost.toFixed(2);
-                        document.getElementById("confirmationCode").innerText = confirmationCode;
+                        displayTotals(preRoomCost, discountCost, postRoomCost, taxCost, totalCost, confirmationCode);
                     }
                 }
     }
@@ -155,4 +141,13 @@ function getRoomRate(checkInDate, roomType){
             return 350;
         }
     }
+}
+
+function displayTotals(preRoomCost, discountCost, postRoomCost, taxCost, totalCost, confirmationCode){
+    document.getElementById("roomCost").innerText = "$" + preRoomCost.toFixed(2);
+    document.getElementById("discountCost").innerText = "$" + discountCost.toFixed(2);
+    document.getElementById("discountedRoomCost").innerText = "$" + postRoomCost.toFixed(2);
+    document.getElementById("taxCost").innerText = "$" + taxCost.toFixed(2);
+    document.getElementById("totalCost").innerText = "$" + totalCost.toFixed(2);
+    document.getElementById("confirmationCode").innerText = confirmationCode;
 }
