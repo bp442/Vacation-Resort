@@ -2,12 +2,12 @@
 
 window.onload = init;
 
-function init(){
+function init() {
     const calcBtn = document.getElementById("calculateBtn");
     calcBtn.onclick = calculateCost;
 }
 
-function calculateCost(){
+function calculateCost() {
     //text boxes
     const messageDiv = document.getElementById("numPplError");
     const fullName = document.getElementById("fullName").value;
@@ -29,107 +29,91 @@ function calculateCost(){
 
     const numPpl = numAdults + numChildren;
     let preRoomCost = 0, postRoomCost = 0, discountCost = 0, taxCost = 0, totalCost = 0;
-    
+    let roomType = "";
 
-    let confirmationCode = fullName.toUpperCase().substring(0, 3) + "-" + (Number(monthCheckIn.getUTCMonth())+1) +
+    let confirmationCode = fullName.toUpperCase().substring(0, 3) + "-" + (Number(monthCheckIn.getUTCMonth()) + 1) +
         monthCheckIn.getUTCFullYear() + "-" + numNights + ":" + numAdults + ":" + numChildren;
 
-    if(queenRadio.checked){
-        if(numPpl > 5){
+
+        //things to do, move the math outside of this if/else, make it just validate and
+        //store a variable for which room type the user input.
+    if (queenRadio.checked) {
+        if (numPpl > 5) {
             messageDiv.innerText = "The room you selected will not hold your party.";
             document.getElementById("confirmationCode").innerText = "";
         }
-        else{
+        else {
             messageDiv.innerText = "";
-            
-            preRoomCost = getRoomRate(monthCheckIn.getMonth(), "Queen") * numNights;
-
-                if(seniorDiscount.checked){
-                    discountCost = preRoomCost * 0.1;
-                }
-                else if(militaryDiscount.checked){
-                    discountCost = preRoomCost * 0.2;
-                }
-
-                displayTotals(preRoomCost, discountCost, postRoomCost, taxCost, totalCost, confirmationCode);
-            }
+            roomType = "Queen";
         }
-        else if(kingRadio.checked){
-            if(numPpl > 2){
-                messageDiv.innerText = "The room you selected will not hold your party.";
-                document.getElementById("confirmationCode").innerText = "";
-            }
-            else{
-                messageDiv.innerText = "";
-                
-                preRoomCost = getRoomRate(monthCheckIn, "King") * numNights;
-    
-                    if(seniorDiscount.checked){
-                        discountCost = preRoomCost * 0.1;
-                    }
-                    else if(militaryDiscount.checked){
-                        discountCost = preRoomCost * 0.2;
-                    }
-
-                    displayTotals(preRoomCost, discountCost, postRoomCost, taxCost, totalCost, confirmationCode);
-                }
-            }
-            else if(twoBedRadio.checked){
-                if(numPpl > 6){
-                    messageDiv.innerText = "The room you selected will not hold your party.";
-                    document.getElementById("confirmationCode").innerText = "";
-                }
-                else{
-                    messageDiv.innerText = "";
-                    
-                    preRoomCost = getRoomRate(monthCheckIn, "twoBedSuite") * numNights;
-        
-                        if(seniorDiscount.checked){
-                            discountCost = preRoomCost * 0.1;
-                        }
-                        else if(militaryDiscount.checked){
-                            discountCost = preRoomCost * 0.2;
-                        }
-        
-                        displayTotals(preRoomCost, discountCost, postRoomCost, taxCost, totalCost, confirmationCode);
-                    }
-                }
+    }
+    else if (kingRadio.checked) {
+        if (numPpl > 2) {
+            messageDiv.innerText = "The room you selected will not hold your party.";
+            document.getElementById("confirmationCode").innerText = "";
+        }
+        else {
+            messageDiv.innerText = "";
+            roomType = "King";
+        }
+    }
+    else if (twoBedRadio.checked) {
+        if (numPpl > 6) {
+            messageDiv.innerText = "The room you selected will not hold your party.";
+            document.getElementById("confirmationCode").innerText = "";
+        }
+        else {
+            messageDiv.innerText = "";
+            roomType = "twoBedSuite";
+        }
     }
 
-function getRoomRate(checkInDate, roomType){
-    if(roomType == "Queen"){
-        if(checkInDate < 5 || checkInDate > 7){
+    preRoomCost = getRoomRate(monthCheckIn.getMonth(), roomType) * numNights;
+
+        if (seniorDiscount.checked) {
+            discountCost = preRoomCost * 0.1;
+        }
+        else if (militaryDiscount.checked) {
+            discountCost = preRoomCost * 0.2;
+        }
+
+        displayTotals(preRoomCost, discountCost, postRoomCost, taxCost, totalCost, confirmationCode);
+}
+
+function getRoomRate(checkInDate, roomType) {
+    if (roomType == "Queen") {
+        if (checkInDate < 5 || checkInDate > 7) {
             return 150;
         }
-        else{
+        else {
             return 250;
         }
     }
-    else if(roomType == "King"){
-        if(checkInDate < 5 || checkInDate > 7){
+    else if (roomType == "King") {
+        if (checkInDate < 5 || checkInDate > 7) {
             return 150;
         }
-        else{
+        else {
             return 250;
         }
     }
-    else if(roomType == "twoBedSuite"){
-        if(checkInDate < 5 || checkInDate > 7){
+    else if (roomType == "twoBedSuite") {
+        if (checkInDate < 5 || checkInDate > 7) {
             return 210;
         }
-        else{
+        else {
             return 350;
         }
     }
 }
 
-function displayTotals(preRoomCost, discountCost, postRoomCost, taxCost, totalCost, confirmationCode){
+function displayTotals(preRoomCost, discountCost, postRoomCost, taxCost, totalCost, confirmationCode) {
     let taxRate = 0.12;
 
     postRoomCost = preRoomCost - discountCost;
-    
+
     taxCost = postRoomCost * taxRate;
-    
+
     totalCost = postRoomCost + taxCost;
 
     document.getElementById("roomCost").innerText = "$" + preRoomCost.toFixed(2);
