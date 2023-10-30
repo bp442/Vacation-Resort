@@ -24,13 +24,12 @@ function calculateCost(){
     const numChildren = Number(document.getElementById("numChildren").value);
 
     //discounts
-    const noDiscount = document.getElementById("noDiscountRadio");
     const seniorDiscount = document.getElementById("seniorDiscountRadio");
     const militaryDiscount = document.getElementById("militaryDiscountRadio");
 
     const numPpl = numAdults + numChildren;
     let preRoomCost = 0, postRoomCost = 0, discountCost = 0, taxCost = 0, totalCost = 0;
-    let taxRate = 0.12;
+    
 
     let confirmationCode = fullName.toUpperCase().substring(0, 3) + "-" + (Number(monthCheckIn.getUTCMonth())+1) +
         monthCheckIn.getUTCFullYear() + "-" + numNights + ":" + numAdults + ":" + numChildren;
@@ -52,13 +51,6 @@ function calculateCost(){
                     discountCost = preRoomCost * 0.2;
                 }
 
-                postRoomCost = preRoomCost - discountCost;
-
-                taxCost = postRoomCost * taxRate;
-
-                totalCost = postRoomCost + taxCost;
-
-
                 displayTotals(preRoomCost, discountCost, postRoomCost, taxCost, totalCost, confirmationCode);
             }
         }
@@ -78,13 +70,7 @@ function calculateCost(){
                     else if(militaryDiscount.checked){
                         discountCost = preRoomCost * 0.2;
                     }
-    
-                    postRoomCost = preRoomCost - discountCost;
-    
-                    taxCost = postRoomCost * taxRate;
-    
-                    totalCost = postRoomCost + taxCost;
-    
+
                     displayTotals(preRoomCost, discountCost, postRoomCost, taxCost, totalCost, confirmationCode);
                 }
             }
@@ -104,12 +90,6 @@ function calculateCost(){
                         else if(militaryDiscount.checked){
                             discountCost = preRoomCost * 0.2;
                         }
-        
-                        postRoomCost = preRoomCost - discountCost;
-        
-                        taxCost = postRoomCost * taxRate;
-        
-                        totalCost = postRoomCost + taxCost;
         
                         displayTotals(preRoomCost, discountCost, postRoomCost, taxCost, totalCost, confirmationCode);
                     }
@@ -144,6 +124,14 @@ function getRoomRate(checkInDate, roomType){
 }
 
 function displayTotals(preRoomCost, discountCost, postRoomCost, taxCost, totalCost, confirmationCode){
+    let taxRate = 0.12;
+
+    postRoomCost = preRoomCost - discountCost;
+    
+    taxCost = postRoomCost * taxRate;
+    
+    totalCost = postRoomCost + taxCost;
+
     document.getElementById("roomCost").innerText = "$" + preRoomCost.toFixed(2);
     document.getElementById("discountCost").innerText = "$" + discountCost.toFixed(2);
     document.getElementById("discountedRoomCost").innerText = "$" + postRoomCost.toFixed(2);
